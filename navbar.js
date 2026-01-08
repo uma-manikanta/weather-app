@@ -1,5 +1,5 @@
 let currActiveItem = document.getElementById('n1');
-
+const thumb = document.getElementById('thumb')
 currActiveItem.classList.add('active');
 
 
@@ -11,6 +11,10 @@ navBar.addEventListener('click', function(event) {
     if (newActiveItem !== currActiveItem) {
         currActiveItem.classList.remove('active');
         newActiveItem.classList.add('active')
+        
+        const left = newActiveItem.offsetLeft;
+        thumb.style.left = left + 'px';
+
         currActiveItem = newActiveItem;
     }
 })

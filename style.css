@@ -35,8 +35,18 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /*  */
     container-type: size;
+}
+#thumb {
+    position: absolute;
+    z-index: -1;
+    left: 3px;
+    /* border: solid 1px red; */
+    height: calc(100% - 6px);
+    width: calc((100% - 6px)/4);
+    background: black;
+    border-radius: 50cqh;
+    transition: left 0.2s cubic-bezier(0.215, 0.610, 0.355, 1);
 }
 
 .nav-item {
@@ -53,6 +63,6 @@ body {
 }
 
 .nav-item.active {
-    background: black;
     color: #f3f3f3;
+    background: transparent;
 }
