@@ -33,7 +33,7 @@ navBar.addEventListener('pointerdown', function (event) {
         navBar.onpointermove = function (event) {
             let belowElement = document.elementFromPoint(
                 event.clientX,
-                event.clientY).closest('.nav-item');
+                event.clientY)?.closest('.nav-item');
             upcomingActiveItem = belowElement ?? upcomingActiveItem;
             let offset = event.clientX - navBar.getBoundingClientRect().left;
             offset = Math.max(3, offset);
