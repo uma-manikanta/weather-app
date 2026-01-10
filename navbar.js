@@ -21,40 +21,43 @@ const navBar = document.getElementById('nav-bar');
 
 //Nav barSlider
 navBar.onselectstart = () => false;
+
 navBar.addEventListener('pointerdown', function (event) {
-    let newActiveItem = event.target.closest('.nav-item');
-    let upcomingActiveItem = currActiveItem;
+    //Only For Sliding 
+    //return if click event is triggered
+    let clickTarget = event.target.closest('.nav-item');
 
     navBar.setPointerCapture(event.pointerId);
-    if (!newActiveItem) return;
-    if (newActiveItem == currActiveItem) { //SLiding
+    if (!clickTarget) return;
+
+    let nextActiveItem = currActiveItem;
+    if (clickTarget == currActiveItem) { //SLiding
         thumb.classList.add('sliding');
         currActiveItem.classList.add('psuedo-active');
+
         navBar.onpointermove = function (event) {
             let belowElement = document.elementFromPoint(
                 event.clientX,
                 event.clientY)?.closest('.nav-item');
-            upcomingActiveItem = belowElement ?? upcomingActiveItem;
+            nextActiveItem = belowElement ?? nextActiveItem;
             let offset = event.clientX - navBar.getBoundingClientRect().left;
             offset = Math.max(3, offset);
             offset = Math.min(offset, navBar.clientWidth - thumb.offsetWidth);
             thumb.style.left = offset + 'px';
         }
-    } else { //clicking
-        upcomingActiveItem = newActiveItem;
     }
     navBar.onpointerup = function (event) {
         navBar.onpointermove = null;
-        thumb.style.left = upcomingActiveItem.offsetLeft + 'px';
-        if (currActiveItem !== upcomingActiveItem) {
+        thumb.style.left = nextActiveItem.offsetLeft + 'px';
+        if (currActiveItem !== nextActiveItem) {
             currActiveItem.classList.remove('active');
-            upcomingActiveItem.classList.add('active');
+            nextActiveItem.classList.add('active');
         }
-        if (currActiveItem == newActiveItem) {
+        if (currActiveItem == clickTarget) {
             thumb.classList.remove('sliding');
             currActiveItem.classList.remove('psuedo-active');
         }
-        currActiveItem = upcomingActiveItem;
+        currActiveItem = nextActiveItem;
         navBar.onpointerup = null;
     }
 
