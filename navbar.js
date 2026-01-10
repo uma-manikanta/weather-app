@@ -6,7 +6,7 @@ let isSliding = false;
 let isReadyToSlide = false; //state pointerdown ------ Sliding
 const navBar = document.getElementById('nav-bar');
 //for sliding (touch and hold)
-const holdDuration = 200; //in ms
+const holdDuration = 300; //in ms
 let holdTimer = null
 
 
@@ -35,6 +35,7 @@ Not used (handled in pointerup)
 for Slider */
 function handleMove(event, shiftX) {
     console.log('Moving');
+    output.innerHTML = "Moving" + event.clientX + ", " + event.clientY;
     const dim = thumb.getBoundingClientRect();
     let belowElement = document.elementFromPoint(
                 (dim.left + dim.right)/2,
