@@ -59,12 +59,19 @@ body {
     /* border: solid 1px red; */
     height: 100%;
     display: flex;
-    font-weight: bold;
+    font-weight: 600;
     flex-direction: column;
+    gap: 4px;
     justify-content: center;
     align-items: center;
     flex: 1 1;
     border-radius: 50cqh;
+}
+.nav-item-name {
+    font-size: 0.8em;
+}
+.nav-item-icon {
+    font-size: 1.3em;
 }
 
 .nav-item.active {
