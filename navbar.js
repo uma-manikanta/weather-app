@@ -3,9 +3,10 @@ let currActiveItem = document.getElementById('n1');
 let nextActiveItem = currActiveItem;
 const thumb = document.getElementById('thumb')
 let isSliding = false;
+let isReadyToSlide = false; //state pointerdown ------ Sliding
 const navBar = document.getElementById('nav-bar');
 //for sliding (touch and hold)
-const holdDuration = 400; //in ms
+const holdDuration = 200; //in ms
 let holdTimer = null
 
 
@@ -55,6 +56,10 @@ function startHold(event) {
     if (!holdTarget) return;
     if (holdTarget !== currActiveItem) return;
     
+    navBar.onpointermove = function(event) {
+        isReadyToSlide = true;
+        clearTimeout(holdTimer);
+    };
     holdTimer = setTimeout(() => {
         isSliding = true;
         thumb.classList.add('sliding');
@@ -84,6 +89,8 @@ function cancelHold(event) {
             currActiveItem = nextActiveItem;
             currActiveItem.classList.add('active');
         }
+    } else if (isReadyToSlide) {
+        isReadyToSlide = false;
     } else {
         console.log('clicking...')
         const releasedOn = document.elementFromPoint(event.clientX, event.clientY);
