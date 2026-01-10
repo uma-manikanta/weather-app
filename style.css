@@ -23,7 +23,7 @@ body {
 
 .nav-bar {
     height: 68px;
-    width: 396px;
+    width: min(400px,100vw);
     position: fixed;
     bottom: 10px;
     left: 50%;
@@ -103,4 +103,13 @@ body {
         inset 0 0 3px 1px rgba(255, 255, 255, 0.7);
     box-shadow: inset 6px 6px 0px -6px rgba(255, 255, 255, 0.7),
         inset 0 0 8px 1px rgba(255, 255, 255, 0.7);
+}
+
+@media screen and (max-width: 425px) {
+    .nav-bar {
+        bottom: 0px;
+        border-radius: 0;
+        width: 100vw;
+        height: 76px;
+    }
 }
