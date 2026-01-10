@@ -57,8 +57,14 @@ function startHold(event) {
     const holdTarget = event.target.closest('.nav-item');
     if (!holdTarget) return;
     if (holdTarget !== currActiveItem) return;
+
+    let initCoords = {x: event.clientX , y: event.clientY};
     
     navBar.onpointermove = function(event) {
+        //TO neglect Small Movements
+        if ((Math.abs(initCoords.x - event.clientX) <= 5) && (Math.abs(initCoords.y - event.clientY) <= 5)) {
+            return
+        }
         output.innerHTML = `You moved Billa ${event.clientX} , ${event.clientY}`;
         isReadyToSlide = true;
         clearTimeout(holdTimer);
