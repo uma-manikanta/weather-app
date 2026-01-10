@@ -1,6 +1,6 @@
 //------------------------Event Global Variables--------------------//
 let currActiveItem = document.getElementById('n1');
-let nextActiveItem = currActiveItem;
+let nextActiveItem = null;
 const thumb = document.getElementById('thumb')
 let isSliding = false;
 let isReadyToSlide = false; //state pointerdown ------ Sliding
@@ -51,6 +51,7 @@ function handleMove(event, shiftX) {
 }
 
 function startHold(event) {
+    nextActiveItem = currActiveItem;
     console.log('pointerdown');
     const holdTarget = event.target.closest('.nav-item');
     if (!holdTarget) return;
@@ -80,6 +81,7 @@ function cancelHold(event) {
         //To set thumb position
         isSliding = false;
         navBar.onpointermove = null;
+        console.log(nextActiveItem);
         thumb.style.left = nextActiveItem.offsetLeft + 'px';
         thumb.classList.remove('sliding');
         currActiveItem.classList.remove('psuedo-active');
@@ -91,6 +93,7 @@ function cancelHold(event) {
         }
     } else if (isReadyToSlide) {
         isReadyToSlide = false;
+        navBar.onpointermove = null;
     } else {
         console.log('clicking...')
         const releasedOn = document.elementFromPoint(event.clientX, event.clientY);
