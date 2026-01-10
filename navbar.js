@@ -59,6 +59,7 @@ function startHold(event) {
     if (holdTarget !== currActiveItem) return;
     
     navBar.onpointermove = function(event) {
+        output.innerHTML = `You moved Billa ${event.clientX} , ${event.clientY}`;
         isReadyToSlide = true;
         clearTimeout(holdTimer);
     };
