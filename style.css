@@ -30,7 +30,7 @@ body {
     transform: translateX(-50%);
     border-radius: 34px;
     padding: 3px;
-    background: #f3f3f3;
+    background: #fff;
     /* backdrop-filter: blur(6px) brightness(1.9); */
     touch-action: none;
     user-select: none;
@@ -68,10 +68,10 @@ body {
     border-radius: 50cqh;
 }
 .nav-item-name {
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 .nav-item-icon {
-    font-size: 1.3em;
+    font-size: 1.5em;
 }
 
 .nav-item.active {
@@ -84,18 +84,17 @@ body {
 }
 
 #thumb.sliding {
-    transform: scale(1.1);
-    border: solid 1px grey;
-    background: #fff5;
-    backdrop-filter: brightness(2);
+    transform: scale(1.2,1.4);
+    border: solid 1px #0009;
+    background: #fff2;
+    border-radius: 16px;
     /* box-shadow: inset 2px 3px 10px black; */
 
 
 
-    transition: opacity 0.26 ease-out;
+    transition: opacity 1 ease-out;
     filter: drop-shadow(-8px -10px 46px #000000c2);
-    backdrop-filter:blur(2px) url(#displacementFilter);
-    background-color: #ffffff89;
+    backdrop-filter: brightness(1.2) blur(1px) contrast(2) saturate(1.3) url(#displacementFilter);
 }
 
 #thumb.sliding::before {
@@ -105,7 +104,7 @@ body {
     inset: 0;
     z-index: 0;
     overflow: hidden;
-    border-radius: 50cqh;
+    border-radius: 16px;
     -webkit-box-shadow: inset 2px 2px 0px -2px rgba(255, 255, 255, 0.7),
         inset 0 0 3px 1px rgba(255, 255, 255, 0.7);
     box-shadow: inset 6px 6px 0px -6px rgba(255, 255, 255, 0.7),
@@ -117,6 +116,6 @@ body {
         bottom: 0px;
         border-radius: 0;
         width: 100vw;
-        height: 76px;
+        height: 68px;
     }
 }
