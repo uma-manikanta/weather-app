@@ -7,32 +7,43 @@
     <title>Weather</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="">
-    <script src="https://kit.fontawesome.com/6aa7e3c7b3.js" crossorigin="anonymous"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
+        <div class="top-bar">
+            <h1>Weather App</h1>
+        </div>
         <div class="weather-content">
-
-            <p id="output" style="color: white; font-size: 18px;">Output</p>
+            <h2 id="location">Guntur</h2>
+            <h1 id="temperature">19&deg;C</h1>
+            <img src="icons/Icon=Thunderstorm.svg" alt="icon" id="weather-icon">
+            <p id="condition">Thunderstorm</p>
+            <!-- <p id="output" style="color: white; font-size: 18px;">Output</p> -->
 
         </div>
         <nav class="nav-bar" id="nav-bar">
             <div class="nav-item-bg" id="thumb"></div>
             <div class="nav-item active" id="n1">
-                <i class="fa-solid fa-home nav-item-icon"></i>
+                <!-- <i class="fa-solid fa-home nav-item-icon"></i> -->
                 <div class="nav-item-name">Home</div>
             </div>
             <div class="nav-item" id="n2">
-                <i class="fa-solid fa-compass nav-item-icon"></i>
+                <!-- <i class="fa-solid fa-compass nav-item-icon"></i> -->
                 <div class="nav-item-name">Explore</div>
             </div>
             <div class="nav-item" id="n3">
-                <i class="fa-solid fa-bell nav-item-icon"></i>
+                <!-- <i class="fa-solid fa-bell nav-item-icon"></i> -->
                 <div class="nav-item-name">Alerts</div>
             </div>
             <div class="nav-item" id="n4">
-                <i class="fa-solid fa-gear nav-item-icon"></i>
+                <!-- <i class="fa-solid fa-gear nav-item-icon"></i> -->
                 <div class="nav-item-name">Settings</div>
             </div>
         </nav>
