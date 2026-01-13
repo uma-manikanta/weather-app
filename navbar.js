@@ -34,8 +34,6 @@ Not used (handled in pointerup)
 /*Pointerdown, PointerUp, pointercancel, pointermove, gotpointercapture
 for Slider */
 function handleMove(event, shiftX) {
-    console.log('Moving');
-    output.innerHTML = "Moving" + event.clientX + ", " + event.clientY;
     const dim = thumb.getBoundingClientRect();
     let belowElement = document.elementFromPoint(
                 (dim.left + dim.right)/2,
@@ -53,7 +51,6 @@ function handleMove(event, shiftX) {
 
 function startHold(event) {
     nextActiveItem = currActiveItem;
-    console.log('pointerdown');
     const holdTarget = event.target.closest('.nav-item');
     if (!holdTarget) return;
     if (holdTarget !== currActiveItem) return;
@@ -83,13 +80,11 @@ function startHold(event) {
 }
 
 function cancelHold(event) {
-    console.log('pointerup/cancel');
     clearTimeout(holdTimer);
     if (isSliding) {
         //To set thumb position
         isSliding = false;
         navBar.onpointermove = null;
-        console.log(nextActiveItem);
         thumb.style.left = nextActiveItem.offsetLeft + 'px';
         thumb.classList.remove('sliding');
         currActiveItem.classList.remove('psuedo-active');
@@ -103,7 +98,6 @@ function cancelHold(event) {
         isReadyToSlide = false;
         navBar.onpointermove = null;
     } else {
-        console.log('clicking...')
         const releasedOn = document.elementFromPoint(event.clientX, event.clientY);
         const clickTarget = releasedOn?.closest('.nav-item');
 
